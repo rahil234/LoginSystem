@@ -1,0 +1,30 @@
+body{
+    background-image: url('./../images/bgImage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.alert{
+    display: none;
+}
+
+.form-cont{
+    height: fit-content;
+    min-width: 90vw;
+    max-width: 600px;
+    background-color: rgba(113, 245, 252, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+a{
+    color: black;
+}
+
+@media (min-width: 425px) {
+    .form-cont{
+        min-width: 400px;
+    }
+}

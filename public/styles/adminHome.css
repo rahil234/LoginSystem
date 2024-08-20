@@ -1,0 +1,127 @@
+body {
+  /* background-image: url("/images/bgImage.jpg"); */
+  background-color: rgb(55, 70, 82);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  max-height: 100svh;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+main {
+  /* text-align: center; */
+  margin-top: 30px;
+  padding: 0 30px;
+  justify-content: center;
+  width: 100vw;
+  align-items: center;
+}
+
+.logout_btn {
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+}
+
+.logout_btn:hover {
+  background-color: #ffffff44;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.users_div {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px;
+}
+
+.users_div .search_div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.users_div .search_div button {
+  border-radius: 10px;
+  padding: 0 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.users_div .search_div button:hover {
+  background-color: #ffffff44;
+}
+
+.searchField[type="text"] {
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  background-color: transparent;
+  background-image: url("/images/searchicon.svg");
+  background-position: 10px 13px;
+  background-repeat: no-repeat;
+  padding: 10px 20px 10px 35px;
+  transition: none !important; /* Disable transition effects */
+  transform: none !important;
+}
+
+.searchField[type="text"]::placeholder {
+  color: white;
+}
+.searchField[type="text"]:focus {
+  background-color: #ffffff44;
+}
+
+.searchField[type="text"]:active {
+  border: 0;
+  transition: none !important; /* Disable transition effects */
+  transform: none !important;
+}
+
+.user_card_div {
+  margin-top: 30px;
+}
+
+.user_card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.user_card:hover {
+  background-color: rgb(112, 128, 141);
+}
+
+.btn_div {
+  display: flex;
+  gap: 10px;
+}
+
+.btn_div a:hover {
+  cursor: pointer;
+}
