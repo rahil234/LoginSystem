@@ -1,9 +1,5 @@
 import { Router } from "express";
 import {isAuthenticated,isNotAuthenticated} from './../middlewares/auth.js'
-// import session from "express-session";
-// import MongoStore from "connect-mongo";
-import {dirname} from 'path'
-import url from 'node:url'
 
 const admin = Router();
 
@@ -21,7 +17,6 @@ admin.route("/login")
     req.session.user = {
       id: req.session.user,
     };
-    console.log(req.session.user);
     
     // Redirect to the admin dashboard
     res.redirect("/admin");

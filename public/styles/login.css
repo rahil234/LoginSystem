@@ -1,5 +1,6 @@
 body{
-    background-image: url('./../images/bgImage.jpg');
+    /* background-image: url('./../images/bgImage.jpg'); */
+    background-color: rgb(55, 70, 82);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,9 +14,10 @@ body{
     height: fit-content;
     min-width: 90vw;
     max-width: 600px;
-    background-color: rgba(113, 245, 252, 0.2);
+    background-color: rgba(245, 246, 246, 0.3);
     padding: 30px;
     border-radius: 20px;
+    border: 1px solid white;
     text-align: center;
 }
 

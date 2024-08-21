@@ -26,12 +26,31 @@
         </div>
         <div class="users_div">
             <div class="search_div">
-                <input type="text" id="searchField" class="searchField" placeholder="Search..">
-                <button>Add <img src="/images/addicon.svg" alt=""></button>
+                    <input type="text" name="searchQuery" id="searchField" class="searchField" placeholder="Search..">
+                <button id="add_btn">Add <img src="/images/addicon.svg" alt=""></button>
             </div>
             <div class="user_card_div" id="user_card_div"></div>
         </div>
     </main>
+
+    <!-- Confirmation Card -->
+    <div id="confirmModal" style="display: none;">
+        <div class="modal-content">
+            <p>Are you sure you want to delete this user?</p>
+            <button id="confirmDelete">Yes</button>
+            <button id="cancelDelete">Cancel</button>
+        </div>
+    </div>
+
+    <!-- New User Card -->
+    <div id="newUserCard" style="display: none;">
+        <div class="modal-content">
+            <input type="text" name="username" id="">
+            <input type="email" name="email" id="">
+            <input type="email" name="phoneno" id="">
+        </div>
+    </div>
+
 </body>
 
 </html>

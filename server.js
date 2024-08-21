@@ -9,8 +9,8 @@ import flash from "connect-flash";
 import { dirname } from "path";
 import User from "./models/userModel.js";
 import adminRoute from "./routes/admin.js";
-import apiRoute from './routes/api.js';
-import { isAuthenticated,isNotAuthenticated } from "./middlewares/auth.js";
+import apiRoute from "./routes/api.js";
+import { isAuthenticated, isNotAuthenticated } from "./middlewares/auth.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,7 +19,6 @@ const app = new express();
 const port = 3000;
 
 app.set("view engine", "ejs");
-9
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: true }));
@@ -30,21 +29,20 @@ app.use((req, res, next) => {
   return next();
 });
 
-
-
 //Mongo-DB setup
 mongoose
-.connect("mongodb://localhost:27017/UserDB")
-.then(() => {
-  console.log("Connected to MongoDB");
-})
-.catch((err) => {
-  console.error("Error connecting to MongoDB", err);
-});
+  .connect("mongodb://localhost:27017/UserDB")
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB", err);
+  });
 
-app.use(flash());
 
-app.use('/admin',
+
+app.use(
+  "/admin",
   session({
     name: "adminSessionID", // Name of the admin session cookie
     secret: "random@123123321321",
@@ -54,11 +52,12 @@ app.use('/admin',
       mongoUrl: "mongodb://localhost:27017/UserDB",
       collectionName: "AdminSession",
     }),
-    cookie: { secure: false }, // Set to true if using HTTPS
+    cookie: { secure: false, maxAge: 60 * 60 * 1000 },
   })
 );
 
-app.use('/',
+app.use(
+  "/",
   session({
     secret: "123123321321", //used to encrypt sessiontoken
     name: "userSessionID",
@@ -70,22 +69,20 @@ app.use('/',
     }),
     cookie: {
       secure: false,
-      httpOnly: true,
       maxAge: 60 * 60 * 1000,
     },
   })
 );
 
+app.use(flash());
 
 app.use((req, res, next) => {
   res.locals.errorMessage = req.flash("error");
   next();
 });
 
-
 app.use("/admin", adminRoute);
 app.use("/api", apiRoute);
-
 
 app
   .route("/login")
@@ -93,7 +90,6 @@ app
     res.render("login");
   })
   .post(async (req, res) => {
-    console.log(req.body);
     try {
       const user = await User.findOne({ username: req.body.username });
       if (user) {
@@ -110,6 +106,8 @@ app
         res.redirect("/login");
       }
     } catch (error) {
+      console.log('Error:',error);
+      
       req.flash("error", "An error occurred.");
       res.redirect("/login");
     }
@@ -125,6 +123,7 @@ app
     res.render("signup");
   })
   .post(async (req, res) => {
+    
     try {
       const existingUser = await User.findOne({ username: req.body.username });
       if (existingUser) {
@@ -139,8 +138,7 @@ app
           username: req.body.username,
           password: hashedPassword,
           phoneno: req.body.phoneno,
-          eamil: req.body.email,
-
+          email: req.body.email,
         });
         await newUser.save();
         req.session.user = { username: newUser.username };
